@@ -2,34 +2,47 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>Login</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login | Liturgy</title>
+    <link rel="stylesheet" href="styles/styles.css" />
     <link rel="icon" type="image/png" href="assets/images/logo.png" />
   </head>
   <body>
-    <div class="container">
-      <h1>Login</h1>
-      <form id="loginForm">
-        <label>Email:</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="Digite seu email"
-          required
-        />
+    <!-- ===== Header fixo ===== -->
+    <header class="app-header">
+      <div class="wrap">
+        <img src="assets/images/logo.png" alt="Logo" class="logo" />
+      </div>
+    </header>
 
-        <label>Senha:</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Digite sua senha"
-          required
-        />
-
-        <button type="submit">Entrar</button>
-      </form>
-      <div id="error" class="error"></div>
-    </div>
+    <!-- ===== Conteúdo principal ===== -->
+    <main class="wrap">
+      <section class="panel stack" style="max-width: 400px; margin: 80px auto">
+        <h1 style="text-align: center">Login</h1>
+        <form id="loginForm" class="stack">
+          <div>
+            <label>Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Digite seu email"
+              required
+            />
+          </div>
+          <div>
+            <label>Senha</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Digite sua senha"
+              required
+            />
+          </div>
+          <button type="submit" class="btn success">Entrar</button>
+        </form>
+        <div id="error" class="toast error"></div>
+      </section>
+    </main>
     <script src="js/login.js"></script>
   </body>
 </html>

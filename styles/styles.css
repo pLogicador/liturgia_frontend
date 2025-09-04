@@ -1,0 +1,262 @@
+/* ===== Header fixo com blur ===== */
+.app-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 1000;
+}
+
+.app-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+}
+
+.app-header .logo {
+  height: 40px;
+}
+
+.app-header nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #f1f1f1;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.app-header nav a:hover {
+  color: #4dabf7;
+}
+
+.app-header nav a.active {
+  color: #4dabf7;
+  font-weight: 600;
+}
+
+/* ===== Reset básico ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #121212;
+  color: #f1f1f1;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+/* ===== Layout base ===== */
+.wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.panel {
+  background: #1e1e1e;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.stack > * + * {
+  margin-top: 16px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+/* ===== Inputs e labels ===== */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #ccc;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #2a2a2a;
+  color: #f1f1f1;
+  font-size: 15px;
+  transition: border 0.2s ease, background 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #4dabf7;
+  background: #333;
+  outline: none;
+}
+
+/* ===== Botões ===== */
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn.success {
+  background: #2e7d32;
+  color: white;
+}
+
+.btn.success:hover {
+  background: #388e3c;
+}
+
+.btn.danger {
+  background: #c62828;
+  color: white;
+}
+
+.btn.danger:hover {
+  background: #e53935;
+}
+
+.btn.warning {
+  background: #f9a825;
+  color: #121212;
+}
+
+.btn.warning:hover {
+  background: #fbc02d;
+}
+
+/* ===== Títulos ===== */
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+/* Toasts (alertas) */
+.toast {
+  position: fixed;
+  top: 20px; /* aparecer no topo */
+  left: 50%; /* centralizado horizontalmente */
+  transform: translateX(-50%) translateY(-20px);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast.success {
+  background: #2e7d32;
+  color: white;
+}
+.toast.error {
+  background: #c62828;
+  color: white;
+}
+.toast.warning {
+  background: #f9a825;
+  color: #121212;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Container de responsáveis */
+#responsibles .responsible {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr auto; /* ajuste proporcional */
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Inputs dentro de responsáveis */
+#responsibles .responsible input {
+  padding: 8px 10px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #2a2a2a;
+  color: #f1f1f1;
+  font-size: 14px;
+  transition: border 0.2s, background 0.2s;
+}
+
+#responsibles .responsible input:focus {
+  border-color: #4dabf7;
+  background: #333;
+  outline: none;
+}
+
+/* Botão remover */
+#responsibles .responsible .removeResponsible {
+  padding: 6px 10px;
+  font-size: 13px;
+  background: #c62828;
+  color: white;
+}
+
+/* Botão adicionar responsável */
+#addResponsible {
+  margin-top: 12px;
+  align-self: start;
+}
+
+@media (max-width: 800px) {
+  #responsibles .responsible {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  #responsibles .responsible {
+    grid-template-columns: 1fr; /* fica tudo em coluna */
+  }
+  #responsibles .responsible .removeResponsible {
+    margin-top: 6px;
+  }
+}

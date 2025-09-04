@@ -1,5 +1,15 @@
 const token = sessionStorage.getItem("token");
-if (!token) window.location.href = "index.html";
+if (!token) {
+  window.location.href = "index.html";
+} else {
+  document.getElementById("userEmail").innerText = "Bem-vindo!";
+}
+
+// Logout
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  sessionStorage.removeItem("token");
+  window.location.href = "index.html";
+});
 
 /* =========================
    Toast
@@ -328,8 +338,9 @@ document.getElementById("liturgyForm").addEventListener("submit", async (e) => {
   if (bibRefRaw && !bib_ref)
     return errorReset("Referência inválida. Use ex: Mateus 1.1-2", btn);
 
-  const today = new Date().toISOString().split("T")[0];
-  if (date < today)
+  const today = new Date();
+  const selectedDate = new Date(date);
+  if (selectedDate < today.setHours(0, 0, 0, 0))
     return errorReset("A data não pode ser anterior a hoje.", btn);
 
   const responsibleDivs = document.querySelectorAll(".responsible");

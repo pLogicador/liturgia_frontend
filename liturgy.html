@@ -2,201 +2,250 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Criar Liturgia</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
     <link rel="icon" type="image/png" href="assets/images/logo.png" />
   </head>
   <body>
-    <div class="container">
-      <h1>Criar Liturgia</h1>
-      <form id="liturgyForm">
-        <label>Evento:</label>
-        <select id="event_name" required>
-          <option value="Culto">Culto</option>
-          <option value="EBD">EBD</option>
-        </select>
+    <!-- Header fixo -->
+    <header class="app-header">
+      <div class="wrap">
+        <img src="assets/images/logo.png" alt="Logo" class="logo" />
+        <nav>
+          <span id="userEmail"></span>
+          <button id="logoutBtn" class="btn danger">Logout</button>
+        </nav>
+      </div>
+    </header>
 
-        <label>Data:</label>
-        <input type="date" id="date" required />
+    <!-- Conteúdo -->
+    <main class="wrap">
+      <section class="panel stack">
+        <h1 style="text-align: center">Criar Liturgia</h1>
 
-        <label>Hora de Início:</label>
-        <input type="time" id="start_time" required />
-
-        <label>Título do Sermão:</label>
-        <input type="text" id="sermon_title" maxlength="50" required />
-
-        <label>Palestrante:</label>
-        <input
-          type="text"
-          id="speaker"
-          list="speakers"
-          maxlength="20"
-          required
-        />
-        <datalist id="speakers">
-          <option value="Rev. Edvaldo Miranda"></option>
-          <!--
-          <option value="Presb. Isaías"></option>
-          <option value="Presb. Paulo Terra Nova"></option>
-          <option value="Presb. Carlos"></option>
-        --></datalist>
-
-        <label>Referência Bíblica:</label>
-        <input
-          type="text"
-          id="bib_ref"
-          list="bibleBooks"
-          maxlength="25"
-          placeholder="Ex: Mateus 1.1-2"
-        />
-        <!-- Lista de livros da Bíblia (66) -->
-        <datalist id="bibleBooks">
-          <option value="Gênesis"></option>
-          <option value="Êxodo"></option>
-          <option value="Levítico"></option>
-          <option value="Números"></option>
-          <option value="Deuteronômio"></option>
-          <option value="Josué"></option>
-          <option value="Juízes"></option>
-          <option value="Rute"></option>
-          <option value="1 Samuel"></option>
-          <option value="2 Samuel"></option>
-          <option value="1 Reis"></option>
-          <option value="2 Reis"></option>
-          <option value="1 Crônicas"></option>
-          <option value="2 Crônicas"></option>
-          <option value="Esdras"></option>
-          <option value="Neemias"></option>
-          <option value="Ester"></option>
-          <option value="Jó"></option>
-          <option value="Salmos"></option>
-          <option value="Provérbios"></option>
-          <option value="Eclesiastes"></option>
-          <option value="Cânticos"></option>
-          <option value="Isaías"></option>
-          <option value="Jeremias"></option>
-          <option value="Lamentações"></option>
-          <option value="Ezequiel"></option>
-          <option value="Daniel"></option>
-          <option value="Oseias"></option>
-          <option value="Joel"></option>
-          <option value="Amós"></option>
-          <option value="Obadias"></option>
-          <option value="Jonas"></option>
-          <option value="Miqueias"></option>
-          <option value="Naum"></option>
-          <option value="Habacuque"></option>
-          <option value="Sofonias"></option>
-          <option value="Ageu"></option>
-          <option value="Zacarias"></option>
-          <option value="Malaquias"></option>
-          <option value="Mateus"></option>
-          <option value="Marcos"></option>
-          <option value="Lucas"></option>
-          <option value="João"></option>
-          <option value="Atos"></option>
-          <option value="Romanos"></option>
-          <option value="1 Coríntios"></option>
-          <option value="2 Coríntios"></option>
-          <option value="Gálatas"></option>
-          <option value="Efésios"></option>
-          <option value="Filipenses"></option>
-          <option value="Colossenses"></option>
-          <option value="1 Tessalonicenses"></option>
-          <option value="2 Tessalonicenses"></option>
-          <option value="1 Timóteo"></option>
-          <option value="2 Timóteo"></option>
-          <option value="Tito"></option>
-          <option value="Filemom"></option>
-          <option value="Hebreus"></option>
-          <option value="Tiago"></option>
-          <option value="1 Pedro"></option>
-          <option value="2 Pedro"></option>
-          <option value="1 João"></option>
-          <option value="2 João"></option>
-          <option value="3 João"></option>
-          <option value="Judas"></option>
-          <option value="Apocalipse"></option>
-        </datalist>
-
-        <h3>Responsáveis</h3>
-        <div id="responsibles">
-          <div class="responsible">
-            <input
-              type="text"
-              placeholder="Momento"
-              class="moment"
-              list="moments"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Nome"
-              class="name"
-              list="names"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Livro"
-              class="book"
-              list="bibleBooks"
-              required
-            />
-            <input
-              type="number"
-              placeholder="Capítulo"
-              class="chapter"
-              min="1"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Versículos"
-              class="verses"
-              required
-            />
-            <button type="button" class="removeResponsible">Remover</button>
+        <form id="liturgyForm" class="stack">
+          <!-- Evento -->
+          <div>
+            <label for="event_name">Evento</label>
+            <select id="event_name" required>
+              <option value="Culto">Culto</option>
+              <option value="EBD">EBD</option>
+            </select>
           </div>
-        </div>
 
-        <!-- Sugestões de momentos -->
-        <datalist id="moments">
-          <option value="Adoração"></option>
-          <option value="Confissão"></option>
-          <option value="Dedicação"></option>
-          <option value="Edificação"></option>
-        </datalist>
-        <!-- Sugestões de Nomes -->
-        <datalist id="names">
-          <option value="Presb. Isaías"></option>
-          <option value="Presb. Paulo Terra Nova"></option>
-          <option value="Presb. Carlos"></option>
-          <option value="Rev. Edvaldo Miranda"></option>
-        </datalist>
+          <!-- Data e hora -->
+          <div class="grid" style="grid-template-columns: 1fr 1fr">
+            <div>
+              <label for="date">Data</label>
+              <input type="date" id="date" required />
+            </div>
+            <div>
+              <label for="start_time">Hora de Início</label>
+              <input type="time" id="start_time" required />
+            </div>
+          </div>
 
-        <button type="button" id="addResponsible">Adicionar Responsável</button>
+          <!-- Sermão -->
+          <div>
+            <label for="sermon_title">Título do Sermão</label>
+            <input type="text" id="sermon_title" maxlength="50" required />
+          </div>
 
-        <!-- Campo opcional de Anotações -->
-        <h3>Anotações (opcional)</h3>
-        <textarea
-          id="notes"
-          placeholder="Anote hinos ou observações aqui..."
-          rows="4"
-        ></textarea>
+          <!-- Palestrante -->
+          <div>
+            <label for="speaker">Palestrante</label>
+            <input
+              type="text"
+              id="speaker"
+              list="speakers"
+              maxlength="20"
+              required
+            />
+            <datalist id="speakers">
+              <option value="Rev. Edvaldo Miranda"></option>
+              <!--
+              <option value="Presb. Isaías"></option>
+              <option value="Presb. Paulo Terra Nova"></option>
+              <option value="Presb. Carlos"></option>
+              -->
+            </datalist>
+          </div>
 
-        <button type="submit">Criar Liturgia</button>
-      </form>
+          <!-- Referência bíblica -->
+          <div>
+            <label for="bib_ref">Referência Bíblica</label>
+            <input
+              type="text"
+              id="bib_ref"
+              list="bibleBooks"
+              maxlength="25"
+              placeholder="Ex: Mateus 1.1-2"
+            />
+            <datalist id="bibleBooks">
+              <option value="Gênesis"></option>
+              <option value="Êxodo"></option>
+              <option value="Levítico"></option>
+              <option value="Números"></option>
+              <option value="Deuteronômio"></option>
+              <option value="Josué"></option>
+              <option value="Juízes"></option>
+              <option value="Rute"></option>
+              <option value="1 Samuel"></option>
+              <option value="2 Samuel"></option>
+              <option value="1 Reis"></option>
+              <option value="2 Reis"></option>
+              <option value="1 Crônicas"></option>
+              <option value="2 Crônicas"></option>
+              <option value="Esdras"></option>
+              <option value="Neemias"></option>
+              <option value="Ester"></option>
+              <option value="Jó"></option>
+              <option value="Salmos"></option>
+              <option value="Provérbios"></option>
+              <option value="Eclesiastes"></option>
+              <option value="Cânticos"></option>
+              <option value="Isaías"></option>
+              <option value="Jeremias"></option>
+              <option value="Lamentações"></option>
+              <option value="Ezequiel"></option>
+              <option value="Daniel"></option>
+              <option value="Oseias"></option>
+              <option value="Joel"></option>
+              <option value="Amós"></option>
+              <option value="Obadias"></option>
+              <option value="Jonas"></option>
+              <option value="Miqueias"></option>
+              <option value="Naum"></option>
+              <option value="Habacuque"></option>
+              <option value="Sofonias"></option>
+              <option value="Ageu"></option>
+              <option value="Zacarias"></option>
+              <option value="Malaquias"></option>
+              <option value="Mateus"></option>
+              <option value="Marcos"></option>
+              <option value="Lucas"></option>
+              <option value="João"></option>
+              <option value="Atos"></option>
+              <option value="Romanos"></option>
+              <option value="1 Coríntios"></option>
+              <option value="2 Coríntios"></option>
+              <option value="Gálatas"></option>
+              <option value="Efésios"></option>
+              <option value="Filipenses"></option>
+              <option value="Colossenses"></option>
+              <option value="1 Tessalonicenses"></option>
+              <option value="2 Tessalonicenses"></option>
+              <option value="1 Timóteo"></option>
+              <option value="2 Timóteo"></option>
+              <option value="Tito"></option>
+              <option value="Filemom"></option>
+              <option value="Hebreus"></option>
+              <option value="Tiago"></option>
+              <option value="1 Pedro"></option>
+              <option value="2 Pedro"></option>
+              <option value="1 João"></option>
+              <option value="2 João"></option>
+              <option value="3 João"></option>
+              <option value="Judas"></option>
+              <option value="Apocalipse"></option>
+            </datalist>
+          </div>
 
-      <div id="success" class="success"></div>
-      <div id="error" class="error"></div>
-      <a id="downloadPDF" href="#" download="liturgia.pdf" style="display: none"
-        >Baixar PDF</a
-      >
-    </div>
+          <!-- Responsáveis -->
+          <h3>Responsáveis</h3>
+          <div id="responsibles" class="stack">
+            <div
+              class="responsible grid"
+              style="grid-template-columns: repeat(6, 1fr); gap: 8px"
+            >
+              <input
+                type="text"
+                placeholder="Momento"
+                class="moment"
+                list="moments"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Nome"
+                class="name"
+                list="names"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Livro"
+                class="book"
+                list="bibleBooks"
+                required
+              />
+              <input
+                type="number"
+                placeholder="Capítulo"
+                class="chapter"
+                min="1"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Versículos"
+                class="verses"
+                required
+              />
+              <button type="button" class="btn danger removeResponsible">
+                Remover
+              </button>
+            </div>
+          </div>
 
+          <datalist id="moments">
+            <option value="Adoração"></option>
+            <option value="Confissão"></option>
+            <option value="Dedicação"></option>
+            <option value="Edificação"></option>
+          </datalist>
+
+          <datalist id="names">
+            <option value="Presb. Isaías"></option>
+            <option value="Presb. Paulo Terra Nova"></option>
+            <option value="Presb. Carlos"></option>
+            <option value="Rev. Edvaldo Miranda"></option>
+          </datalist>
+
+          <button type="button" id="addResponsible" class="btn warning">
+            Adicionar Responsável
+          </button>
+
+          <!-- Anotações -->
+          <h3>Anotações (opcional)</h3>
+          <textarea
+            id="notes"
+            placeholder="Anote hinos ou observações aqui..."
+            rows="4"
+          ></textarea>
+
+          <!-- Botão principal -->
+          <button type="submit" class="btn success">Criar Liturgia</button>
+        </form>
+
+        <!-- Toasts -->
+        <div id="success" class="toast success"></div>
+        <div id="error" class="toast error"></div>
+        <a
+          id="downloadPDF"
+          href="#"
+          download="liturgia.pdf"
+          style="display: none"
+          >Baixar PDF</a
+        >
+      </section>
+    </main>
+
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="js/liturgy.js"></script>
+    <script src="js/login.js"></script>
   </body>
 </html>
